@@ -1,0 +1,64 @@
+# General
+*.DS_Store
+Thumbs.db
+
+# Build outputs
+bin/
+obj/
+**/bin/
+**/obj/
+
+# VS / IDE
+.vs/
+*.user
+*.suo
+*.userprefs
+*.idea/
+*.vscode/*
+!*.vscode/settings.json
+!*.vscode/extensions.json
+!*.vscode/tasks.json
+!*.vscode/launch.json
+
+# Dotnet / NuGet
+*.log
+*.cache
+*.nuspec
+*.nupkg
+packages/
+artifacts/
+project.lock.json
+project.fragment.lock.json
+*.nuget.props
+*.nuget.targets
+
+# Coverage / Test
+TestResults/
+*.coverage
+*.coverageinfo
+coverage*
+*.trx
+
+# Temporary
+*.tmp
+*.temp
+*.bak
+*.orig
+
+# .github prompt files
+.github/
+
+# User generated runtime data for labs (if any added later)
+lab/**/run-output/
+lab/**/scratch/
+
+# Ignore any future hidden lab iteration working folders
+lab/**/~*/
+
+# Logs
+*.log
+logs/
+
+# OS
+ehthumbs.db
+Desktop.ini
