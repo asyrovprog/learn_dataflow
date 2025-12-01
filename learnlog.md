@@ -387,7 +387,22 @@
 11/29/2025
 - Step: lab
 - Id: 12
-- Status: started
+- Status: completed
 - Topic: Reactive Extensions (Rx.NET)
 - Lab: lab/iter12
-- TODOs: 3 (N1: Create debounced search observable with Throttle/Where, N2: Transform to API calls with SelectMany/FromAsync, N3: Subscribe and handle results with proper disposal)
+- Result: Tests passing (4/4 - dotnet run)
+- Summary: Completed search autocomplete implementation using Rx.NET demonstrating debouncing with Throttle operator (300ms delay), filtering empty/whitespace queries with Where, async transformation with SelectMany/Observable.FromAsync for API calls, proper subscription management with IDisposable pattern, and verification of disposal behavior preventing post-disposal API invocations.
+
+11/30/2025
+- Step: topic
+- Id: 13
+- Status: completed
+- Topic: IAsyncEnumerable & Async Streams
+- Summary: Selected foundational topic covering C# 8.0+ async iteration patterns, yield return in async contexts, cancellation token integration, and bridging with Dataflow/Rx/Channels as natural progression from reactive patterns and dataflow processing.
+
+11/30/2025
+- Step: learn
+- Id: 13
+- Status: started
+- Topic: IAsyncEnumerable & Async Streams
+- Summary: Created comprehensive learning materials covering async iteration fundamentals (IAsyncEnumerable<T> interface, ValueTask-based MoveNextAsync, IAsyncDisposable), producer patterns (async + yield return, [EnumeratorCancellation] attribute), consumer patterns (await foreach, WithCancellation, manual enumeration), common use cases (database streaming, paginated APIs, real-time sensors, file processing), integration with TPL Dataflow/Rx.NET/Channels, cancellation token propagation, async disposal patterns, memory efficiency comparisons, performance considerations (ConfigureAwait, ValueTask optimization), buffering/batching strategies, transformation operators, testing approaches, and best practices for lazy evaluation vs buffering trade-offs. Materials in learn/learn13.md.

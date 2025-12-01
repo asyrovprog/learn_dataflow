@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using System.Threading.Tasks;
@@ -27,7 +28,9 @@ namespace Lab.Iter12
             // 2. Apply Throttle operator with TimeSpan.FromMilliseconds(300)
             // 3. Chain Where operator to filter: !string.IsNullOrWhiteSpace(query)
             // 4. Return the configured observable
-            throw new NotImplementedException("TODO[N1]");
+            return _searchSubject
+                .Throttle(TimeSpan.FromMilliseconds(300))
+                .Where(e => !string.IsNullOrWhiteSpace(e));
         }
 
         // TODO[N2]: Transform to API Calls with SelectMany
@@ -42,7 +45,7 @@ namespace Lab.Iter12
             // 1. Use SelectMany on debouncedObservable
             // 2. Inside SelectMany, convert query to observable: Observable.FromAsync(() => SearchApiAsync(query))
             // 3. Return the transformed observable
-            throw new NotImplementedException("TODO[N2]");
+            return debouncedObservable.SelectMany(s => Observable.FromAsync(() => SearchApiAsync(s)));
         }
 
         // TODO[N3]: Subscribe and Handle Results
@@ -57,7 +60,14 @@ namespace Lab.Iter12
             // 2. In OnNext handler: loop through results array and add each to _apiCallLog
             // 3. Optional: Add OnError and OnCompleted handlers
             // 4. Return the IDisposable subscription
-            throw new NotImplementedException("TODO[N3]");
+            var subscription = apiResultsObservable.Subscribe(onNext: (results) =>
+            {
+                foreach (var result in results)
+                {
+                    _apiCallLog.Add(result);
+                }
+            });
+            return subscription;
         }
 
         public void StartSearchPipeline()
